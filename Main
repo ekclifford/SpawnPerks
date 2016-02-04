@@ -24,7 +24,6 @@ public void openGUI(Player p){
     inv.setItem(3, new ItemStack(Material.BOAT));
     inv.setItem(6, new ItemStack(Material.LEATHER_CHESTPLATE));
     inv.setItem(9, new ItemStack(Material.NETHER_PORTAL_FRAME));
-    p.openInventory(inv);
 }
 	public boolean oncommand(CommandSender sender, Command cmd, String label, String[] args){
 		if(cmd.getName().equalsIgnoreCase("Perks")){
@@ -39,7 +38,32 @@ public void openGUI(Player p){
     openGUI(player);
     }
     }
+    public void InventoryClick(InventoryClickEvent e){
+        Player p = (Player) e.getWhoClicked();  
 
+   if(e.getInventory().getTitle().contains("inv")){
+      e.setCancelled(true);
 
-
+    if(e.getCurrentItem() == null){
+    return;
+            }
+    else if(e.getCurrentItem().getType() == Material.BONE){
+    //Add new GUI to open
+     p.closeInventory();
+            }
+         else if(e.getCurrentItem().getType() == Material.NETHER_PORTAL_FRAME){
+    //Add new GUI to open
+     p.closeInventory();
+       }
+         else if(e.getCurrentItem().getType() == Material.BOAT){
+    //Add new GUI to open
+     p.closeInventory();
+  }
+      else if(e.getCurrentItem().getType() == Material.LEATHER_CHESTPLATE){
+    //Add new GUI to open
+     p.closeInventory();
+     }
+}
+}
+}
 }

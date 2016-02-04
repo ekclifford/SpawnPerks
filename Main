@@ -1,0 +1,45 @@
+package com.ekclifford.Main.Main
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+public class Main extends JavaPlugin implements Listener{
+
+public void onEnable(){
+this.getServer().getPluginManager().registerEvents(this, this);
+getlogger().info("Plugin Enabled");
+
+}
+public void onDisable(){
+getLogger().info("Plugin Disabled");
+}
+
+public Inventory inv;
+
+public void openGUI(Player p){
+    inv = Bukkit.createInventory(null, 9, "Spawn Perks");
+    inv.setItem(0, new ItemStack(Material.BONE);
+    inv.setItem(3, new ItemStack(Material.BOAT));
+    inv.setItem(6, new ItemStack(Material.LEATHER_CHESTPLATE));
+    inv.setItem(9, new ItemStack(Material.NETHER_PORTAL_FRAME));
+    p.openInventory(inv);
+}
+	public boolean oncommand(CommandSender sender, Command cmd, String label, String[] args){
+		if(cmd.getName().equalsIgnoreCase("Perks")){
+			Player player = (Player) sender;
+			if(!(sender instanceof player)){
+			getLogger().info("You can't do that command in concole!");
+			}
+			}
+    else(cmd.getName().equalsIgnoreCase("Perks")){
+    Player player = (Player) sender;
+    if(sender instanceof player){
+    openGUI(player);
+    }
+    }
+
+
+
+}
